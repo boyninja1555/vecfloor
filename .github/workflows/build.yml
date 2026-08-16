@@ -120,17 +120,24 @@ jobs:
         run: |
           DATE="$(date -u +'%Y.%m.%d')"
           echo "Looking for existing builds for ${DATE}..."
-          LAST_BUILD=$(
+          LAST_BUILD="$(
             gh release list --limit 1000 --json tagName --jq '.[].tagName' |
-            grep -E "^${DATE}-[0-9]+$" |
-            sed "s/^${DATE}-//" |
-            sort -n |
-            tail -1
-          )
-          if [ -z "$LAST_BUILD" ]; then
+            awk -v date="$DATE" '
+              $0 ~ "^" date "-[0-9]+$" {
+                sub("^" date "-", "")
+                if ($0 + 0 > max)
+                  max = $0 + 0
+              }
+              END {
+                if (max > 0)
+                  print max
+              }
+            '
+          )"
+          if [[ -z "$LAST_BUILD" ]]; then
             BUILD=1
           else
-            BUILD=$((10#$LAST_BUILD + 1))
+            BUILD=$((LAST_BUILD + 1))
           fi
           TAG="${DATE}-$(printf '%02d' "$BUILD")"
           echo "date=${DATE}" >> "$GITHUB_OUTPUT"
