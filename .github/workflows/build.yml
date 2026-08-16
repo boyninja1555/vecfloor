@@ -1,4 +1,4 @@
-name: Build & Release
+name: Build & release
 
 on:
   push:
@@ -47,6 +47,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup CMake 4.2
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: "4.2.3"
 
       - name: Build static library
         shell: bash
