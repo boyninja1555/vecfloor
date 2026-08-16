@@ -52,7 +52,7 @@ jobs:
         shell: bash
         run: |
           chmod +x ./build.sh
-          ./build.sh --config Release
+          ./build.sh Release
 
       - name: Configure dynamic build
         shell: bash
