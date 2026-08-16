@@ -48,9 +48,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install CMake
-        uses: lukka/get-cmake@v3
-
       - name: Build static library
         shell: bash
         run: |
