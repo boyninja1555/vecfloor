@@ -4,17 +4,22 @@
 
 Vector vec_empty(vec_isize item_length)
 {
-    void *items = malloc(VEC_DEFCAP * item_length);
-    Vector vec = vec_of(0, item_length, items);
-    free(items);
-    return vec;
+    vec_size cap = VEC_DEFCAP * item_length;
+    return (Vector){
+        .length = 0,
+        .cap = cap,
+        .item_length = item_length,
+        .items = malloc(cap),
+    };
 }
 
 Vector vec_of(vec_size length, vec_isize item_length, const void *items)
 {
     vec_size cap = (length == 0 ? VEC_DEFCAP : length) * item_length;
     void *dup = malloc(cap);
-    memcpy(dup, items, sizeof(items));
+    if (length > 0)
+        memcpy(dup, items, length * item_length);
+
     return (Vector){
         .length = length,
         .cap = cap,
