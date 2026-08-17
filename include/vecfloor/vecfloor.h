@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #define VEC_DEFCAP 8
 
@@ -80,6 +81,13 @@ int vec_prepend(Vector *vec, const void *item);
  * @param i Index to use
  */
 int vec_delete(Vector *vec, vec_size i);
+
+/**
+ * Whether Vector A == vVector B
+ * @param a Lefthand Vector
+ * @param b Righthand Vector
+ */
+bool vec_equals(const Vector a, const Vector b);
 
 /**
  * Frees/deallocates a dynamically-sized array.

@@ -68,6 +68,13 @@ int str_prepend(String *str, const char c);
 int str_delete(String *str, vec_size i);
 
 /**
+ * Whether String A == String B
+ * @param a Lefthand String
+ * @param b Righthand String
+ */
+bool str_equals(const String a, const String b);
+
+/**
  * Frees/deallocates a String.
  * @param str String to free/deallocate
  */

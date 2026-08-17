@@ -47,6 +47,11 @@ int str_delete(String *str, vec_size i)
     return vec_delete(str, i);
 }
 
+bool str_equals(const String a, const String b)
+{
+    return vec_equals(a, b);
+}
+
 void str_free(String *str)
 {
     vec_free(str);
