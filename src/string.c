@@ -54,7 +54,7 @@ bool str_equals(const String a, const String b)
 
 bool str_equals_cstr(const String a, const char *b)
 {
-    return memcmp(a.items, b, a.length);
+    return memcmp(a.items, b, a.length) == 0;
 }
 
 void str_free(String *str)
