@@ -15,3 +15,8 @@ bool vec_equals(const Vector a, const Vector b)
 {
     return a.length == b.length && a.item_length == b.item_length && memcmp(a.items, b.items, a.length) == 0;
 }
+
+bool vec_equals_buf(const Vector a, const void *b)
+{
+    return a.length == sizeof(b) && memcmp(a.items, b, a.length) == 0;
+}

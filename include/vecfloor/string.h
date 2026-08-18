@@ -75,6 +75,13 @@ int str_delete(String *str, vec_size i);
 bool str_equals(const String a, const String b);
 
 /**
+ * Whether String A == cstr B
+ * @param a Lefthand String
+ * @param b Righthand cstr
+ */
+bool str_equals_cstr(const String a, const char *b);
+
+/**
  * Frees/deallocates a String.
  * @param str String to free/deallocate
  */

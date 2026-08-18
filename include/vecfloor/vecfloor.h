@@ -83,11 +83,18 @@ int vec_prepend(Vector *vec, const void *item);
 int vec_delete(Vector *vec, vec_size i);
 
 /**
- * Whether Vector A == vVector B
+ * Whether Vector A == Vector B
  * @param a Lefthand Vector
  * @param b Righthand Vector
  */
 bool vec_equals(const Vector a, const Vector b);
+
+/**
+ * Whether Vector A == buffer B
+ * @param a Lefthand Vector
+ * @param b Righthand buffer
+ */
+bool vec_equals_buf(const Vector a, const void *b);
 
 /**
  * Frees/deallocates a dynamically-sized array.

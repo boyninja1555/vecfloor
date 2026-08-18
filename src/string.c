@@ -52,6 +52,11 @@ bool str_equals(const String a, const String b)
     return vec_equals(a, b);
 }
 
+bool str_equals_cstr(const String a, const char *b)
+{
+    return memcmp(a.items, b, a.length);
+}
+
 void str_free(String *str)
 {
     vec_free(str);
